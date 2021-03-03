@@ -10,8 +10,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        WindowCompat.setDecorFitsSystemWindows(window, false)
-
         val data = intent.getIntExtra("index", 0).let {
             dogs[it]
         }

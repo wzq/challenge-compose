@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -19,14 +20,24 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun DogItemCard(dog: Dog, index: Int, onClick: (Int) -> Unit) {
-    val cornerSize = if (dog.isAdopt) 24.dp else 0.dp
+    val cornerNormal = CornerSize(0.dp)
+    val cornerRound = if (dog.isAdopt) CornerSize(24.dp) else cornerNormal
+    val shape = RoundedCornerShape(
+        topEnd = cornerRound,
+        topStart = cornerNormal,
+        bottomEnd = cornerNormal,
+        bottomStart = cornerNormal
+    )
     Surface(
-        shape = RoundedCornerShape(topEnd = cornerSize),
+        shape = shape,
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.Red)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable(onClick = { onClick(index) })) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable(onClick = { onClick(index) })
+        ) {
             Image(
                 painter = painterResource(id = dog.imageRes),
                 contentScale = ContentScale.FillBounds,
