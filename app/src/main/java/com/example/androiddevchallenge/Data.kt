@@ -15,13 +15,13 @@
  */
 package com.example.androiddevchallenge
 
-import androidx.annotation.IdRes
+import androidx.annotation.DrawableRes
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 
 data class Dog(
     val name: String,
-    @IdRes val imageRes: Int,
+    @DrawableRes val imageRes: Int,
     val desc: String,
     var isAdopt: MutableState<Boolean> = mutableStateOf(false)
 )
