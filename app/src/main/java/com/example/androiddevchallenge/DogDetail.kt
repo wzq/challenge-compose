@@ -1,6 +1,8 @@
 package com.example.androiddevchallenge
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -66,13 +68,20 @@ fun DogDetail(dog: Dog, onBackPressed: () -> Unit) {
                 }
             }
             val onAdoptChanged = remember(calculation = { dog.isAdopt })
-            Button(
-                onClick = {
-                    onAdoptChanged.value = !onAdoptChanged.value
-                },
-                Modifier.fillMaxWidth()
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .background(purple500)
+                    .fillMaxWidth()
+                    .clickable {
+                        onAdoptChanged.value = !onAdoptChanged.value
+                    }
             ) {
-                Text(text = if (onAdoptChanged.value) "Let me think again" else "Yes,I want to adopt it")
+                Text(
+                    text = if (onAdoptChanged.value) "Let me think again" else "Yes,I want to adopt it",
+                    color = Color.White,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                )
             }
         }
     }
