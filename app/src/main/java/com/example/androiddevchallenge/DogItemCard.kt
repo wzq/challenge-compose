@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DogItemCard(dog: Dog, onClick: (Dog) -> Unit) {
+fun DogItemCard(dog: Dog, index: Int, onClick: (Int) -> Unit) {
     val cornerSize = if (dog.isAdopt) 24.dp else 0.dp
     Surface(
         shape = RoundedCornerShape(topEnd = cornerSize),
@@ -26,7 +26,7 @@ fun DogItemCard(dog: Dog, onClick: (Dog) -> Unit) {
             .fillMaxWidth()
             .background(Color.Red)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable(onClick = { onClick(dog) })) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable(onClick = { onClick(index) })) {
             Image(
                 painter = painterResource(id = dog.imageRes),
                 contentScale = ContentScale.FillBounds,

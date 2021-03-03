@@ -1,10 +1,82 @@
 package com.example.androiddevchallenge
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
-
-const val SCREEN_DETAIL = "Detail"
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.ui.theme.purple200
+import com.example.androiddevchallenge.ui.theme.purple500
+import com.example.androiddevchallenge.ui.theme.purple700
 
 @Composable
-fun DogDetail(dog: Dog){
-
+fun DogDetail(dog: Dog, onBackPressed: () -> Unit) {
+    Surface {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
+                item {
+                    Box {
+                        Image(
+                            painter = painterResource(id = dog.imageRes),
+                            contentScale = ContentScale.Crop,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .aspectRatio(4 / 3f)
+                        )
+                        TopAppBar(
+                            backgroundColor = Color.Transparent,
+                            elevation = 0.dp,
+                            contentColor = purple500
+                        ) {
+                            IconButton(onClick = onBackPressed) {
+                                Icon(
+                                    imageVector = Icons.Rounded.ArrowBack,
+                                    contentDescription = null
+                                )
+                            }
+                        }
+                    }
+                }
+                item {
+                    Text(text = dog.name, fontSize = 24.sp, modifier = Modifier.padding(16.dp))
+                }
+                item {
+                    Text(
+                        text = dog.desc,
+                        fontSize = 16.sp,
+                        color = Color.Gray,
+                        modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                    )
+                }
+            }
+            Button(
+                onClick = {
+                    dog.isAdopt = !dog.isAdopt
+                },
+                Modifier
+                    .width(240.dp)
+                    .padding(bottom = 60.dp)
+            ) {
+                Text(text = if (dog.isAdopt) "Not Adopt" else "Adopt")
+            }
+        }
+    }
 }

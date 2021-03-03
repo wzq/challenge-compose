@@ -2,7 +2,6 @@ package com.example.androiddevchallenge
 
 import androidx.annotation.IdRes
 
-
 data class Dog(
     val name: String,
     @IdRes val imageRes: Int,
