@@ -17,7 +17,6 @@ This is the first time I use Jetpack Compose, it is very advanced, I will contin
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
 <img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
-<img src="/results/screenshot_2.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">
 
 ## License
 ```
