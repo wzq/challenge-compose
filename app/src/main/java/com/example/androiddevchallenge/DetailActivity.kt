@@ -3,7 +3,6 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class DetailActivity : AppCompatActivity() {

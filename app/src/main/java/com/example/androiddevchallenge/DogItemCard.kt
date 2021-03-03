@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,7 +22,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun DogItemCard(dog: Dog, index: Int, onClick: (Int) -> Unit) {
     val cornerNormal = CornerSize(0.dp)
-    val cornerRound = if (dog.isAdopt) CornerSize(24.dp) else cornerNormal
+    val isAdopt = remember(calculation = { dog.isAdopt })
+    val cornerRound = if (isAdopt.value) CornerSize(24.dp) else cornerNormal
     val shape = RoundedCornerShape(
         topEnd = cornerRound,
         topStart = cornerNormal,

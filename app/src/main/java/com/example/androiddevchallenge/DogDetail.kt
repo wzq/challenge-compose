@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,9 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.androiddevchallenge.ui.theme.purple200
 import com.example.androiddevchallenge.ui.theme.purple500
-import com.example.androiddevchallenge.ui.theme.purple700
 
 @Composable
 fun DogDetail(dog: Dog, onBackPressed: () -> Unit) {
@@ -67,15 +65,14 @@ fun DogDetail(dog: Dog, onBackPressed: () -> Unit) {
                     )
                 }
             }
+            val onAdoptChanged = remember(calculation = { dog.isAdopt })
             Button(
                 onClick = {
-                    dog.isAdopt = !dog.isAdopt
+                    onAdoptChanged.value = !onAdoptChanged.value
                 },
-                Modifier
-                    .width(240.dp)
-                    .padding(bottom = 60.dp)
+                Modifier.fillMaxWidth()
             ) {
-                Text(text = if (dog.isAdopt) "Not Adopt" else "Adopt")
+                Text(text = if (onAdoptChanged.value) "Let me think again" else "Yes,I want to adopt it")
             }
         }
     }

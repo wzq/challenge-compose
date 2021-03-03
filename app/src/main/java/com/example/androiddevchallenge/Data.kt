@@ -1,12 +1,14 @@
 package com.example.androiddevchallenge
 
 import androidx.annotation.IdRes
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 
 data class Dog(
     val name: String,
     @IdRes val imageRes: Int,
     val desc: String,
-    var isAdopt: Boolean = false
+    var isAdopt: MutableState<Boolean> = mutableStateOf(false)
 )
 
 val dogs = listOf(
@@ -19,7 +21,6 @@ val dogs = listOf(
         name = "Long Haired German Shepherd",
         imageRes = R.drawable.dog2,
         desc = "Known for the intelligence and protective nature, German Shepherds are one of the most popular breeds around. They’re beautiful dogs that have the unique distinction of being a working-class breed. You can see these pups serving in the military or accompanying police officers on the job.",
-        isAdopt = true
     ),
     Dog(
         name = "Corgi Husky Mix",
